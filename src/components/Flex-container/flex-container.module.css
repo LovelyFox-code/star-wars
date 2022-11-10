@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 1024px;
+    margin: auto;
+}
+.container a{
+    color: #000000;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+@media screen and (min-width: 768px) {
+    .container a{
+        font-size: 25px;
+    }
+  }
+  @media screen and (min-width: 900px) {
+    .container a{
+        
+        font-size: 30px;
+    }
+  }

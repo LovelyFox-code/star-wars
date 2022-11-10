@@ -1,0 +1,28 @@
+.text_container{
+    background-color: #f7c325;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: black;
+    width: 100%;
+    font-size: 21px;
+}
+.text_container ul{
+    width: 100%;
+    list-style-type: square;
+    padding: 20px;
+}
+.text_container li{
+    
+    padding: 5px 0;
+}
+
+@media screen and (min-width: 768px) {
+    .text_container {
+        font-size: 30px;
+    }
+  }
+  @media screen and (min-width: 900px) {
+    .text_container {
+        font-size: 35px;
+    }
+  }

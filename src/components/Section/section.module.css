@@ -1,0 +1,12 @@
+.section{
+    width: 90%;
+    margin: auto;
+    padding: 16px 0 16px 0;
+    display: flex;
+    justify-content: space-between;
+    overflow: scroll;
+    max-width: 1200px;
+}
+.section:first-child{
+    padding-top: 10%;
+}
