@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
-import Details, { loader as contactLoader } from "./routes/Details";
+import Details, { loader as detailsLoader } from "./routes/FilmDetails";
 import Root, { loader as rootLoader } from "./routes/Root";
+import FilmIndex from "./routes/FilmIndex";
 
 const router = createBrowserRouter([
   {
@@ -13,11 +14,17 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
-  },
-  {
-    path: "films/:filmId",
-    element: <Details />,
-    loader: contactLoader,
+    children: [
+      {
+        path: "films",
+        element: <FilmIndex />,
+      },
+      {
+        path: "films/:filmId",
+        element: <Details />,
+        loader: detailsLoader,
+      },
+    ],
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));

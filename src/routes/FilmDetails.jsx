@@ -8,11 +8,16 @@ import {
   IoIosCar,
 } from "react-icons/io";
 import { GiAlienSkull } from "react-icons/gi";
-import { fetchFilms, fetchPageDetails } from "../fetchAPI";
-import { useState, useEffect } from "react";
+import { fetchPageDetails } from "../fetchAPI";
+import { useState } from "react";
 import data from "../data.json";
 import Crawl from "../components/Crawl/Crawl";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 
 const icons = {
   characters: <IoIosPeople />,
@@ -36,21 +41,11 @@ export async function loader({ params }) {
 }
 
 function Details() {
+  const { films } = useOutletContext();
   let { filmId } = useParams();
   const filmDetails = useLoaderData();
-  const [films, setFilms] = useState([]);
   const [category, setCategory] = useState("characters");
   const categoryNames = data.categories;
-
-  useEffect(() => {
-    const loadFilms = async () => {
-      const filmData = await fetchFilms();
-      setFilms(filmData);
-    };
-    loadFilms();
-
-    return () => {};
-  }, []);
 
   return (
     <div className="App">

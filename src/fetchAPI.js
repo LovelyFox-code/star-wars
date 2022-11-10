@@ -26,14 +26,14 @@ export async function fetchPageDetails(id) {
     return categoryRequests;
   });
   const relatedData = {};
-  for (let i = 0; i < requests.length; i++) {
-    const categoryRequests = requests[i];
-    const categoryName = data.categories[i];
-    const categoryResponses = await Promise.all(categoryRequests);
-    const categoryData = await Promise.all(
-      categoryResponses.map((response) => response.json())
-    );
-    relatedData[categoryName] = categoryData;
-  }
+  // for (let i = 0; i < requests.length; i++) {
+  //   const categoryRequests = requests[i];
+  //   const categoryName = data.categories[i];
+  //   const categoryResponses = await Promise.all(categoryRequests);
+  //   const categoryData = await Promise.all(
+  //     categoryResponses.map((response) => response.json())
+  //   );
+  //   relatedData[categoryName] = categoryData;
+  // }
   return { ...pageDetails, ...relatedData };
 }
