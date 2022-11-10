@@ -1,6 +1,5 @@
 import Box from "../components/Box/Box";
 import Section from "../components/Section/Section";
-import TextContainer from "../components/Text-container/TextContainer";
 import {
   IoIosPeople,
   IoIosPlanet,
@@ -9,11 +8,11 @@ import {
 } from "react-icons/io";
 import { GiAlienSkull } from "react-icons/gi";
 import { fetchPageDetails } from "../fetchAPI";
-import { useState } from "react";
 import data from "../data.json";
 import Crawl from "../components/Crawl/Crawl";
 import {
   Link,
+  Outlet,
   useLoaderData,
   useOutletContext,
   useParams,
@@ -42,9 +41,8 @@ export async function loader({ params }) {
 
 function Details() {
   const { films } = useOutletContext();
-  let { filmId } = useParams();
+  let { filmId, category } = useParams();
   const filmDetails = useLoaderData();
-  const [category, setCategory] = useState("characters");
   const categoryNames = data.categories;
 
   return (
@@ -74,26 +72,19 @@ function Details() {
           return (
             <Box
               key={name}
-              onClick={() => setCategory(name)}
               style={{
                 backgroundColor: category === name ? "#ffc402" : "",
               }}
             >
-              {name}
-              {icon}
+              <Link to={`/films/${filmId}/categories/${name}`}>
+                {name}
+                {icon}
+              </Link>
             </Box>
           );
         })}
       </Section>
-      <Section>
-        <TextContainer>
-          <ul>
-            {filmDetails[category].map((entry) => (
-              <li key={entry.name}>{entry.name}</li>
-            ))}
-          </ul>
-        </TextContainer>
-      </Section>
+      <Outlet />
     </div>
   );
 }

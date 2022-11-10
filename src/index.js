@@ -2,31 +2,46 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import ErrorPage from "./error-page";
 import Details, { loader as detailsLoader } from "./routes/FilmDetails";
 import Root, { loader as rootLoader } from "./routes/Root";
 import FilmIndex from "./routes/FilmIndex";
+import CategoryDetails, {
+  loader as categoryLoader,
+} from "./routes/CategoryDetails";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    loader: rootLoader,
-    children: [
-      {
-        path: "films",
-        element: <FilmIndex />,
-      },
-      {
-        path: "films/:filmId",
-        element: <Details />,
-        loader: detailsLoader,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      element={<Root />}
+      path="/"
+      loader={rootLoader}
+      errorElement={<ErrorPage />}
+    >
+      <Route element={<FilmIndex />} index errorElement={<ErrorPage />} />
+      <Route
+        element={<Details />}
+        path="films/:filmId"
+        loader={detailsLoader}
+        errorElement={<ErrorPage />}
+      >
+        <Route
+          element={<CategoryDetails />}
+          path="categories/:category"
+          loader={categoryLoader}
+          errorElement={<ErrorPage />}
+        />
+      </Route>
+    </Route>
+  )
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
