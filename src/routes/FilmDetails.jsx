@@ -19,7 +19,7 @@ import {
 } from "react-router-dom";
 import TextContainer from "../components/Text-container/TextContainer";
 import { useState } from "react";
-import Button from "../components/Button/Button";
+import AnimationSwitcher from "../components/AnimationSwitcher/AnimationSwitcher";
 
 const icons = {
   characters: <IoIosPeople />,
@@ -48,10 +48,7 @@ function Details() {
   const filmDetails = useLoaderData();
   const [isAnimated, setIsAnimated] = useState(true);
   const categoryNames = data.categories;
-  // Toggle text crawl animation
-  const toggle = () => {
-    setIsAnimated(!isAnimated);
-  };
+
   return (
     <div className="App">
       <Section>
@@ -83,15 +80,10 @@ function Details() {
         </Section>
       )}
 
-      {isAnimated ? (
-        <Button onClick={() => toggle()}>
-          <h4>Show the text</h4>
-        </Button>
-      ) : (
-        <Button onClick={() => toggle()}>
-          <h4>Animate</h4>
-        </Button>
-      )}
+      <AnimationSwitcher
+        isAnimated={isAnimated}
+        setIsAnimated={setIsAnimated}
+      />
 
       <Section>
         {categoryNames.map((name) => {

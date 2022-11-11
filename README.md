@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Coding challenge solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The challenge was to create a single page application that presents a list that shows all the Star Wars films
 
-## Available Scripts
+### [StarWars API](https://swapi.dev/)
 
-In the project directory, you can run:
+### The challenge
 
-### `npm start`
+- To create a single page application that presents a list that shows all the Star Wars films
+- Clicking on an item/film shows a new view of other details
+- Create something simple, user friendly and eye appealing
+- Deliver the code using GitHub
+- Show skills with React
+- **Bonus** Deliver the exercise with a readme file
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+My focus was on:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Simple, beautiful layout
 
-### `npm test`
+  Before coding, I sat down and made a drawing of the layout that would work on mobile screens as well as desktop screens. The detail page has a lot of data: the title, movie crawl text, year, and then the related data like planets, characters, species, etc, and let's not forget the different movies. In order to display these options and data in a way that the user can manage I implemented sideways scrollbar switchers (Netflix style) so the user can select which movie and category details they want to see. In order for users to get excited about the movie I animated the opening crawl!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Showing new view for details
 
-### `npm run build`
+  In my recent projects, I worked with Next.js, which has a built-in routing system. Since the requirements mention a new view for the details and using a SPA (not a backend framework) I decided to use React Router (which I have not used before). In the end, I implemented the different views with nested routes and the `<Outlet />` component.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Loading data efficiently API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  The related data is not loaded when requesting a film from the StarWars API. Instead, you get an array of URLs. In my first version, I loaded all related data with a loop and Promise. All, but that made the app load quite slowly. In version 2 I used a separate loader (from React Router) for categories and fetch 1 array of related data when the user selects that category.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Delivering step by step
 
-### `npm run eject`
+  I decided to build my APP step by step. This way I quickly had a working version for users or to demo to a client. I made 3 versions each with a seperate Pull Request:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - Version 1: []() Initial layout, fetching data, routing
+  - Version 2: []() Nested routes, loading categories seperately, added loading spinner
+  - Version 3 []() Adding (some) tests and a readme
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Screenshot so far!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Preview image](/src/index-page-preview.png)
+![Preview image](/src/detail-page-preview.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Built with
 
-## Learn More
+- Create [React](https://reactjs.org/) APP
+- React Router
+- React Hooks
+- Module CSS
+- Flex-box
+- Mobile-first workflow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### How to use it:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- clone repository to your local folder `git clone https://github.com/LovelyFox-code/star-wars`
+- install dependencies `npm install `
+- write on your terminal window `npm start`
+- to test it split your terminal and run application `npm test`
+- enjoy exploring
 
-### Code Splitting
+### Still TODO
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ ] make separate view to view each item from category(each character, species and etc)
+- [ ] write more tests for components
+- [ ] make more efficient layout for desktop, because on desktop we could display more data at the same time
