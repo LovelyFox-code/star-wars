@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchFilms } from "../fetchAPI";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigation } from "react-router-dom";
 
 export async function loader() {
   const films = await fetchFilms();
@@ -9,9 +9,11 @@ export async function loader() {
 
 export default function Root() {
   const { films } = useLoaderData();
+  const navigation = useNavigation();
   return (
-    <div>
+    <>
+      <div className={navigation.state === "loading" ? "loading" : ""}></div>
       <Outlet context={{ films }} />
-    </div>
+    </>
   );
 }

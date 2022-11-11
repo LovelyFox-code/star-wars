@@ -17,11 +17,44 @@ code {
   padding: 0;
   /* border: 1px solid red; */
   box-sizing: border-box;
-  
+  letter-spacing: 2px;
 }
 .App {
   background-color: #000000;
   width: 100%;
   color: #fdf3d3;
   min-height: 100vh;
+}
+.error_text{
+  font-size: 30px;
+  color: red;
+  text-align: center;
+}
+
+.loading {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #ffc402;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 35%;
+  text-align: center;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

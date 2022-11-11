@@ -6,6 +6,7 @@ import HeroTitle from "../components/Hero-title/HeroTitle";
 
 export default function FilmIndex() {
   const { films } = useOutletContext();
+
   return (
     <div>
       <FlexContainer>
