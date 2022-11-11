@@ -1,6 +1,5 @@
 import Box from "../components/Box/Box";
 import Section from "../components/Section/Section";
-import TextContainer from "../components/Text-container/TextContainer";
 import {
   IoIosPeople,
   IoIosPlanet,
@@ -8,11 +7,19 @@ import {
   IoIosCar,
 } from "react-icons/io";
 import { GiAlienSkull } from "react-icons/gi";
-import { fetchFilms, fetchPageDetails } from "../fetchAPI";
-import { useState, useEffect } from "react";
+import { fetchPageDetails } from "../fetchAPI";
 import data from "../data.json";
 import Crawl from "../components/Crawl/Crawl";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLoaderData,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
+import TextContainer from "../components/Text-container/TextContainer";
+import { useState } from "react";
+import Button from "../components/Button/Button";
 
 const icons = {
   characters: <IoIosPeople />,
@@ -36,29 +43,24 @@ export async function loader({ params }) {
 }
 
 function Details() {
-  let { filmId } = useParams();
+  const { films } = useOutletContext();
+  let { filmId, category } = useParams();
   const filmDetails = useLoaderData();
-  const [films, setFilms] = useState([]);
-  const [category, setCategory] = useState("characters");
+  const [isAnimated, setIsAnimated] = useState(true);
   const categoryNames = data.categories;
-
-  useEffect(() => {
-    const loadFilms = async () => {
-      const filmData = await fetchFilms();
-      setFilms(filmData);
-    };
-    loadFilms();
-
-    return () => {};
-  }, []);
-
+  // Toggle text crawl animation
+  const toggle = () => {
+    setIsAnimated(!isAnimated);
+  };
   return (
     <div className="App">
       <Section>
         {films.map((film, index) => (
           <Box
+            size="small"
             key={film.episode_id}
             style={{
+              // Highlight current box
               backgroundColor: parseInt(filmId) === index + 1 ? "#ffc402" : "",
             }}
           >
@@ -69,8 +71,27 @@ function Details() {
         ))}
       </Section>
       <Section>
-        <Crawl>{filmDetails.opening_crawl}</Crawl>
+        <h1>{filmDetails.title.toUpperCase()} </h1>
       </Section>
+      {isAnimated ? (
+        <Section>
+          <Crawl>{filmDetails.opening_crawl}</Crawl>{" "}
+        </Section>
+      ) : (
+        <Section>
+          <TextContainer>{filmDetails.opening_crawl}</TextContainer>
+        </Section>
+      )}
+
+      {isAnimated ? (
+        <Button onClick={() => toggle()}>
+          <h4>Show the text</h4>
+        </Button>
+      ) : (
+        <Button onClick={() => toggle()}>
+          <h4>Animate</h4>
+        </Button>
+      )}
 
       <Section>
         {categoryNames.map((name) => {
@@ -79,26 +100,20 @@ function Details() {
           return (
             <Box
               key={name}
-              onClick={() => setCategory(name)}
               style={{
+                // Highlight current category
                 backgroundColor: category === name ? "#ffc402" : "",
               }}
             >
-              {name}
-              {icon}
+              <Link to={`/films/${filmId}/categories/${name}`}>
+                {name}
+                {icon}
+              </Link>
             </Box>
           );
         })}
       </Section>
-      <Section>
-        <TextContainer>
-          <ul>
-            {filmDetails[category].map((entry) => (
-              <li key={entry.name}>{entry.name}</li>
-            ))}
-          </ul>
-        </TextContainer>
-      </Section>
+      <Outlet />
     </div>
   );
 }

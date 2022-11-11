@@ -1,0 +1,21 @@
+.btn_container{
+    color: #feda4a;
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+.btn{
+    background-color: transparent;
+    border: none;
+    padding: 10px 0 ;
+    font-size: 16px;
+    color: #feda4a;
+}
+@media screen and (min-width: 768px) {
+    .btn{
+        font-size: 24px;
+    }
+  }
+  
