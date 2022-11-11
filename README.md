@@ -31,9 +31,9 @@ My focus was on:
 
   I decided to build my APP step by step. This way I quickly had a working version for users or to demo to a client. I made 3 versions each with a seperate Pull Request:
 
-  - Version 1: []() Initial layout, fetching data, routing
-  - Version 2: []() Nested routes, loading categories seperately, added loading spinner
-  - Version 3 []() Adding (some) tests and a readme
+  - [Version #1: ](https://github.com/LovelyFox-code/star-wars/pull/1) Initial layout, fetching data, routing
+  - [Version #2: ](https://github.com/LovelyFox-code/star-wars/pull/2) Nested routes, loading categories seperately, added loading spinner
+  - [Version #3 ](https://github.com/LovelyFox-code/star-wars/pull/3) Adding (some) tests and a readme
 
 ### Screenshot so far!
 
