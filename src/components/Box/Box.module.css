@@ -7,7 +7,7 @@
     color: black;
 }
 .box_size_small{
-    min-width: 100px;
+    min-width: 60px;
 }
 .box_size_medium{
     min-width: 355px;
@@ -21,7 +21,7 @@
 }
 .box_container_content a{
     color: black;
-    padding: 10%;
+    padding: 5%;
     font-weight: 500;
     text-decoration: none;
     display: flex;
@@ -38,6 +38,9 @@
     }
     .box_size_medium{
         min-width: 500px;
+    }
+    .box_size_small{
+        min-width: 100px;
     }
   }
   @media screen and (min-width: 900px) {
