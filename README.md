@@ -54,7 +54,7 @@ My focus was on:
 - clone repository to your local folder `git clone https://github.com/LovelyFox-code/star-wars`
 - install dependencies `npm install `
 - write on your terminal window `npm start`
-- to test it split your terminal and run application `npm test`
+- to test it split your terminal and run `npm test`
 - enjoy exploring
 
 ### Still TODO

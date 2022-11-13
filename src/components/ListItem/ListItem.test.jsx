@@ -6,8 +6,8 @@ test("if renders items contains Luke", () => {
   const filmDetails = [{ name: "Luke" }, { name: "Han Solo" }];
   render(<ListItems filmDetails={filmDetails} />);
   //act
-  const listItems = screen.getAllByRole("listitem");
+  const lukeItem = screen.getByText(/luke/i);
 
   //assert
-  expect(listItems).toBeInTheDocument(/luke/i);
+  expect(lukeItem).toBeVisible();
 });
