@@ -21,7 +21,6 @@ test("AnimationSwitcher should display 'animate' when the text is selected", () 
 
 test("AnimationSwitcher should toggle between animation and text", () => {
   //arrange
-
   const Parent = () => {
     const [isAnimated, setIsAnimated] = useState(true);
     return (
