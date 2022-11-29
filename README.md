@@ -34,6 +34,8 @@ My focus was on:
   - [Version #1: ](https://github.com/LovelyFox-code/star-wars/pull/1) Initial layout, fetching data, routing
   - [Version #2: ](https://github.com/LovelyFox-code/star-wars/pull/2) Nested routes, loading categories seperately, added loading spinner
   - [Version #3 ](https://github.com/LovelyFox-code/star-wars/pull/3) Adding (some) tests and a readme
+  - [Version #4 ](https://github.com/LovelyFox-code/star-wars/pull/4) Tests fix
+  - [Version #5 ](https://github.com/LovelyFox-code/star-wars/pull/5) Implement filter input
 
 ### Screenshot so far!
 
